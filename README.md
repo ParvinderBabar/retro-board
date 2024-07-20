@@ -6,6 +6,9 @@ npm create vite@latest
 projectname:retro-board
 pick react with javascript
 
+then npm install
+npm run dev
+
 created github public repository
 git remote add orgin "link"
 git branch -M main
