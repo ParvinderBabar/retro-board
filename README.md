@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
 
 Steps to make this project 
 07-20-2024: started with new project retro-board
@@ -23,4 +14,21 @@ created github public repository
 git remote add orgin "link"
 git branch -M main
 git push -u main
->>>>>>> origin/main
+
+/////i made some changes to project and create new .due to which i has to merge previous code to new one
+# Step 1: Fetch remote changes
+git fetch origin
+
+# Step 2: Merge with the --allow-unrelated-histories flag
+git merge origin/main --allow-unrelated-histories
+
+# Step 3: Resolve any merge conflicts if necessary
+git add .
+git commit -m "Resolved merge conflicts"
+
+# Step 4: Push the local main branch to the remote repository
+git push -u origin main
+By following these steps, i was able to merge the histories and push local main branch to the remote repository successfully.
+
+##installed tailwind Css
+
