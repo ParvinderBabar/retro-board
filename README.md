@@ -1,18 +1,18 @@
 # My Development Journey
-Welcome to my development journey repository! This README documents my daily progress, what I've learned, and the challenges I've faced as I work on various web development projects.
+Welcome to my development journey repository! This README documents my daily progress of Retro Board project, what I've learned, and the challenges I've faced  while working.
 ## Daily Logs
 Steps to make this project 
 ### July 20, 2024
 started with new project retro-board
 
-npm create vite@latest
+# npm create vite@latest
 projectname:retro-board
 framework: react with variant :javascript
 
 then npm install
-npm run dev
+# npm run dev
 
-created github public repository
+# created github public repository
 git remote add orgin "link"
 git branch -M main
 git push -u main
@@ -32,10 +32,10 @@ git commit -m "Resolved merge conflicts"
 git push -u origin main
 By following these steps, i was able to merge the histories and push local main branch to the remote repository successfully.
 
-##installed tailwind Css
+## installed tailwind Css
 steps followed from tailwind documentation
-##started with App.jsx
-created basic card using function and used different variables title ,delete ,like,vote which futher i will change into state.
+# started with App.jsx
+  created basic card using function and used different variables title ,delete ,like,vote which futher i will change into state later on.
 
 **Accomplishments:**
 
@@ -44,7 +44,7 @@ created basic card using function and used different variables title ,delete ,li
 
 **Challenges:**
 
-- Faced issues with component reusability and ensuring proper data flow between `App` and `PerformTaskList`.
+- Faced issues with component reusability and ensuring proper data flow between `App` and `TaskCard`.
 
 **Learnings:**
 
@@ -61,6 +61,7 @@ created basic card using function and used different variables title ,delete ,li
 **Accomplishments:**
 
 - Implemented and refined the `TaskCard` component in React.
+- add props commnet,actionToperform and add icons to each from lucid icons
   - Added PropTypes for validation.
   - Integrated icons (ThumbsUp, MessageSquare, Trash2, SquareGanttChart) from `lucide-react`.
 - Fixed issues with prop validation.
