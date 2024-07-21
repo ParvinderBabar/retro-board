@@ -1,52 +1,53 @@
+// import React from 'react';
 import './index.css'; // or your CSS file name
+import './App.css';
+import PerformTaskList from './Components/PerformTaskList.jsx';
 
-import './App.css'
+// Define your tasks here
+const tasks = [
+  {
+    title: 'What didn\'t go well',
+    comment: "No comments yet",
+    vote: "5 votes",
+    action: "Take action",
+    delete: "Delete",
+    Status: "NotGoneWell",
+  },
+  {
+    title: 'Improved on project',
+    comment: "No comments yet",
+    vote: "5 votes",
+    action: "Take action",
+    delete: "Delete",
+    Status: "Improved",
+  },
+  {
+    title: 'Submit files',
+    comment: "No comments yet",
+    vote: "5 votes",
+    action: "Take action",
+    delete: "Delete",
+    Status: "Kudos",
+  },
+  // Add more task objects here if needed
+];
 
-const card = (title,deleteButton,like,vote) => {
-  return (<div>
-    <div className=' text-white text-4xl border rounded-2xl bg-purple-300  backdrop-grayscale-0 border-r-2 p-2 m-2'>
-      <div className='font-semibold text-white'>
-        {title}
-      </div>
-      <div className='flex justify-between py-2 text-gray-800'>
-        <div>{like}</div>
-        <div>{deleteButton}</div>
-        <div>{vote}</div>
-      </div>
-          
-    </div>
-       
-  </div>
-  )
-}
-  
 function App() {
+  const NotGoneWell = tasks.filter((task) => task.Status === 'NotGoneWell');
+  const improved = tasks.filter((task) => task.Status === 'Improved');
+  const Kudos = tasks.filter((task) => task.Status === 'Kudos');
 
-  // const title = 'what didnt go well';
-  // const like = "likes";
-  // const deleteButton ="delete";
-  // const vote = "vote"
-
-
-
-
-
-
-
-
-
-  
   return (
     <>
-      {card("what didnt go well", "like", "deleteButton", "vote")}
-      {card("what didnt go well","like","deleteButton","vote")}
-     {card("what didnt go well","like","deleteButton","vote")}
-     
-      
-     
-      
+      <h1>Tasks by Status</h1>
+      <h2>Not Gone Well</h2>
+      <PerformTaskList tasks={NotGoneWell} />
+      <h2>Improved</h2>
+      <PerformTaskList tasks={improved} />
+      <h2>Kudos</h2>
+      <PerformTaskList tasks={Kudos} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
