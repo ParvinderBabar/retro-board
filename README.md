@@ -33,6 +33,9 @@ git push -u origin main
 By following these steps, i was able to merge the histories and push local main branch to the remote repository successfully.
 
 ##installed tailwind Css
+steps followed from tailwind documentation
+##started with App.jsx
+created basic card using function and used different variables title ,delete ,like,vote which futher i will change into state.
 
 **Accomplishments:**
 
