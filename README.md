@@ -4,7 +4,7 @@ Steps to make this project
 
 npm create vite@latest
 projectname:retro-board
-pick react with javascript
+framework: react with variant :javascript
 
 then npm install
 npm run dev
