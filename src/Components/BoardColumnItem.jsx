@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
-import TaskCard from './TaskCard'; // Ensure the path is correct
+import { useState, useEffect } from 'react';
 import { Brush } from 'lucide-react'; // Import the Brush icon
+import TaskCard from './TaskCard.jsx';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const colors = [
   { name: 'Purple', hex: '#AE84E6' },
@@ -11,24 +12,31 @@ const colors = [
   { name: 'Blue', hex: '#A4E9FA' },
   { name: 'Pink', hex: '#F3C4E6' }
 ];
+
 const defaultColumnColors = {
-  'Not Gone Well': '#FBF084', // Yellow
+  'NotGoneWell': '#FBF084', // Yellow
   'Improved': '#B0F1AE', // Green
   'Kudos': '#A4E9FA', // Blue
 };
 
-
+const fallbackColor = '#d1d5db'; // Light gray or any default color
 
 const BoardColumnItem = ({ column, tasks, addTask, deleteTask, updateColumnColor }) => {
   const [isAddingTask, setIsAddingTask] = useState(false);
   const [newTask, setNewTask] = useState({ title: '', comment: '', priority: 'low', status: column.status });
   const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
-  const [columnColor, setColumnColor] = useState(column.bgColor || defaultColumnColors[column.status]); // Use column.bgColor from props or default to the first color
+  const [columnColor, setColumnColor] = useState(column.bgColor || defaultColumnColors[column.status] || fallbackColor);
+
+  useEffect(() => {
+    // Update column color if column.bgColor changes
+    setColumnColor(column.bgColor || defaultColumnColors[column.status] || fallbackColor);
+  }, [column.bgColor, column.status]);
 
   const handleAddTask = () => {
     if (!newTask.title) return; // Ensure title is provided
 
     addTask(column.status, {
+      // eslint-disable-next-line no-undef
       id: uuidv4(),
       ...newTask,
     });
@@ -44,15 +52,15 @@ const BoardColumnItem = ({ column, tasks, addTask, deleteTask, updateColumnColor
   };
 
   return (
-    <div className={`column-card-container text-black font-bold ${!tasks.length && 'no-cards'}`} id={`card-column-${column.id}`}>
-      <div className="card column-card bg-white" style={{ backgroundColor: columnColor }}>
-        <div className="card-header card-header-sm column-header flex justify-between items-center p-2 border-b border-gray-300">
+    <div className="column-card-container text-black font-bold">
+      <div className="column-card bg-white p-2 shadow-md border border-gray-300 rounded" style={{ backgroundColor: columnColor }}>
+        <div className="column-header flex justify-between items-center p-2 border-b border-gray-300">
           <div className="flex items-center">
             <input
               type='text'
               value={column.name}
               readOnly
-              className='p-2 text-lg bg-transparent border-none text-black font-bold border-black'
+              className='p-2 text-lg bg-transparent border-none text-black font-bold'
             />
             <div className="relative ml-2">
               <Brush className="cursor-pointer text-pink-600" onClick={() => setIsColorPickerOpen(!isColorPickerOpen)} />
@@ -74,8 +82,8 @@ const BoardColumnItem = ({ column, tasks, addTask, deleteTask, updateColumnColor
           </div>
         </div>
 
-        <div className="card-body column-body-list p-2 text-black font-bold">
-          <div className="space-y-2 text-black font-bold"> {/* Adds space between tasks */}
+        <div className="column-body-list p-2 text-black font-bold">
+          <div className="space-y-2 text-black font-bold">
             {tasks.map(task => (
               <TaskCard
                 key={task.id}
@@ -85,6 +93,7 @@ const BoardColumnItem = ({ column, tasks, addTask, deleteTask, updateColumnColor
                 priority={task.priority}
                 status={task.status}
                 onDelete={deleteTask}
+                onUpdate={() => {}}
                 color={columnColor} // Pass the column color to TaskCard
               />
             ))}
@@ -149,6 +158,7 @@ BoardColumnItem.propTypes = {
   })).isRequired,
   addTask: PropTypes.func.isRequired,
   deleteTask: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired,
   updateColumnColor: PropTypes.func.isRequired, // New prop for color update
 };
 

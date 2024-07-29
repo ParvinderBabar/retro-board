@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import BoardColumnItem from './Components/BoardColumnItem.jsx'; // Ensure the path is correct
+import BoardColumnItem from './Components/BoardColumnItem'; // Ensure the path is correct
 
 const initialColumns = [
   { id: 'column-1', name: 'What didn\'t go well?', color: 'bg-purple-900', bgColor: '#d1d5db', status: 'NotGoneWell', taskIds: [] },
